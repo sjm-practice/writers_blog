@@ -86,6 +86,8 @@
       }
     ],
     "react/no-danger": "warn",
+    "react/display-name": "off",
+    "react/prop-types": "off",
     "react/require-default-props": "warn",
     "react/sort-comp": [
       "warn",

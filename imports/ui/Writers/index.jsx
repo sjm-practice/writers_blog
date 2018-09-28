@@ -1,6 +1,6 @@
-/* eslint-disable react/display-name */
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
+import Writer from "./Writer";
 
 export default ({ match: { url }, writers }) => (
   <Fragment>
@@ -11,5 +11,12 @@ export default ({ match: { url }, writers }) => (
         </li>
       ))}
     </ul>
+
+    <Route
+      path={`${url}/:writerId`}
+      render={({ match }) => (
+        <Writer {...writers.find(writer => writer.id === match.params.writerId)} />
+      )}
+    />
   </Fragment>
 );
