@@ -6,7 +6,8 @@
     "lint": "eslint . --ext .js,.jsx --ignore-pattern 'packages/**'",
     "test": "npm run unit-test",
     "unit-test": "jest -c .jest-config.json",
-    "update-snapshots": "jest -c .jest-config.json --updateSnapshot"
+    "update-snapshots": "jest -c .jest-config.json --updateSnapshot",
+    "server": "json-server --watch store.json --port 3004"
   },
   "dependencies": {
     "@material-ui/core": "^3.1.1",
@@ -36,6 +37,7 @@
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
     "jest": "^23.6.0",
+    "json-server": "^0.14.0",
     "prettier": "^1.14.3",
     "react-test-renderer": "^16.5.2",
     "regenerator-runtime": "^0.12.1"
