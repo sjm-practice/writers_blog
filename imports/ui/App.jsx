@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import styles from "./styles";
+import Writers from "./Writers";
 
 // App component - represents the whole app
 export default withStyles(styles)(
@@ -12,7 +13,9 @@ export default withStyles(styles)(
       classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
     };
 
-    state = {};
+    state = {
+      writers: [],
+    };
 
     async componentDidMount() {
       const writers = await (await fetch("http://localhost:3004/writers")).json();
@@ -28,6 +31,7 @@ export default withStyles(styles)(
 
     render() {
       const { classes } = this.props;
+      const { writers } = this.state;
 
       return (
         <BrowserRouter>
@@ -42,7 +46,10 @@ export default withStyles(styles)(
             </ul>
 
             <Route exact path="/" render={() => <div>Home</div>} />
-            <Route path="/writers" render={() => <div>Writers</div>} />
+            <Route
+              path="/writers"
+              render={props => <Writers {...props} writers={writers} />}
+            />
           </Fragment>
         </BrowserRouter>
       );
