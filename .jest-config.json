@@ -1,0 +1,14 @@
+{
+  "verbose": false,
+  "clearMocks": true,
+  "setupTestFrameworkScriptFile": "<rootDir>/tests/jestSetup.js",
+  "moduleNameMapper": {
+    "^meteor/(.*)$": "<rootDir>/tests/jest-meteor-mocks/$1.js"
+  },
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    "/.meteor/",
+    "/public/"
+  ],
+  "testRegex": "/tests/.*\\.jest\\.jsx?$"
+}

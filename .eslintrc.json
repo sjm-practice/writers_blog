@@ -1,0 +1,124 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "meteor",
+    "react",
+    "prettier"
+  ],
+  "extends": [
+    "airbnb",
+    "plugin:meteor/recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react"
+  ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "alert": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "spread": true,
+      "modules": true,
+      "blockBindings": true,
+      "destructuring": true,
+      "arrowFunctions": true
+    }
+  },
+  "settings": {
+    "import/core-modules": [
+      "meteor/meteor",
+      "meteor/accounts-base",
+      "meteor/mongo",
+      "meteor/mdg:validated-method",
+      "meteor/mdg:validation-error",
+      "meteor/aldeed:simple-schema",
+      "meteor/practicalmeteor:chai",
+      "meteor/xolvio:cleaner",
+      "meteor/http",
+      "meteor/react-meteor-data",
+      "meteor/check"
+    ]
+  },
+  "rules": {
+    "semi": "error",
+    "no-console": "warn",
+    "no-multi-spaces": [
+      "warn",
+      {
+        "ignoreEOLComments": true
+      }
+    ],
+    "quotes": [
+      "error",
+      "double",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": [
+          "_id",
+          "_execute",
+          "_sleepForMs"
+        ]
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "arrowParens": "avoid",
+        "bracketSpacing": true,
+        "printWidth": 90,
+        "singleQuote": false,
+        "tabWidth": 2,
+        "trailingComma": "all",
+        "useTabs": false
+      }
+    ],
+    "react/no-danger": "warn",
+    "react/require-default-props": "warn",
+    "react/sort-comp": [
+      "warn",
+      {
+        "order": [
+          "props",
+          "static-methods",
+          "lifecycle",
+          "everything-else",
+          "render"
+        ],
+        "groups": {
+          "props": [
+            "props",
+            "defaultProps"
+          ]
+        }
+      }
+    ],
+    "meteor/eventmap-params": [
+      "error",
+      {
+        "templateInstanceParamName": "instance"
+      }
+    ],
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": [
+          "^meteor/"
+        ]
+      }
+    ],
+    "jsx-a11y/no-static-element-interactions": "warn"
+  }
+}

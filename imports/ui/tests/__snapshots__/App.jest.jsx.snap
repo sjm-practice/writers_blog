@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> matches render snapshot 1`] = `
+<div
+  className="MuiPaper-root-3 MuiPaper-elevation2-7 MuiPaper-rounded-4 App-root-1"
+>
+  <h1
+    className="MuiTypography-root-30 MuiTypography-display1-34 MuiTypography-gutterBottom-48 MuiTypography-alignCenter-44"
+  >
+    Hello!
+  </h1>
+</div>
+`;
