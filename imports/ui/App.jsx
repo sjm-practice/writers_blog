@@ -14,6 +14,18 @@ export default withStyles(styles)(
 
     state = {};
 
+    async componentDidMount() {
+      const writers = await (await fetch("http://localhost:3004/writers")).json();
+
+      this.setState({ writers });
+
+      // or, in a promise format...
+      // fetch("http://localhost:3004/writers")
+      //   .then(res => res.json())
+      //   .then(writers => this.setState({ writers }))
+      //   .catch(error => console.error("Error:", error)); // eslint-disable-line no-console
+    }
+
     render() {
       const { classes } = this.props;
 
