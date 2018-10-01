@@ -19,7 +19,9 @@ export default withStyles(styles)(
     };
 
     async componentDidMount() {
-      const writers = await (await fetch("http://localhost:3004/writers")).json();
+      const writers = await (await fetch(
+        "http://localhost:3004/writers?_embed=texts",
+      )).json();
 
       this.setState({ writers });
 

@@ -17,14 +17,16 @@ export default ({ match: { url }, writers }) => (
 
     <Route
       path={`${url}/:writerId`}
-      render={({ match }) => {
-        const foundWriter = writers.find(writer => writer.id === match.params.writerId);
+      render={props => {
+        const foundWriter = writers.find(
+          writer => writer.id === props.match.params.writerId,
+        );
 
         if (!foundWriter) {
           return <NotFound />;
         }
 
-        return <Writer {...foundWriter} />;
+        return <Writer {...props} {...foundWriter} />;
       }}
     />
   </Fragment>
