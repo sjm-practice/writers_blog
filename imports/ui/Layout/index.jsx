@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Link, withRouter } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -6,11 +7,13 @@ import {
   Typography,
   Hidden,
   Drawer,
-  Divider,
   CssBaseline,
+  MenuList,
+  MenuItem,
 } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
 import { withStyles } from "@material-ui/core/styles";
+import { compose } from "recompose";
 
 const drawerWidth = 240;
 
@@ -43,6 +46,9 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
   },
+  nested: {
+    paddingLeft: theme.spacing.unit * 4,
+  },
 });
 
 class Layout extends Component {
@@ -55,16 +61,44 @@ class Layout extends Component {
   };
 
   render() {
-    const { classes, children } = this.props;
+    const {
+      classes,
+      location: { pathname },
+      children,
+      writers,
+    } = this.props;
     const { mobileOpen } = this.state;
 
     const drawer = (
       <div>
-        <Hidden smDown>
-          <div className={classes.toolbar} />
-        </Hidden>
-        hello.
-        <Divider />
+        <MenuList>
+          <Hidden smDown>
+            <div className={classes.toolbar} />
+          </Hidden>
+          <MenuItem component={Link} to="/" selected={pathname === "/"}>
+            Home
+          </MenuItem>
+          <MenuItem component={Link} to="/writers" selected={pathname === "/writers"}>
+            Writers
+          </MenuItem>
+        </MenuList>
+        <MenuList>
+          {writers.map(({ id, name }) => {
+            const to = `/writers/${id}`;
+
+            return (
+              <MenuItem
+                key={id}
+                component={Link}
+                className={classes.nested}
+                to={to}
+                selected={pathname === to}
+              >
+                {name}
+              </MenuItem>
+            );
+          })}
+        </MenuList>
       </div>
     );
 
@@ -76,7 +110,7 @@ class Layout extends Component {
             <Toolbar>
               <IconButton
                 color="inherit"
-                aria-label="Open drawer"
+                aria-label="open drawer"
                 onClick={this.handleDrawerToggle}
                 className={classes.navIconHide}
               >
@@ -113,11 +147,17 @@ class Layout extends Component {
               {drawer}
             </Drawer>
           </Hidden>
-          <main className={classes.content}>{children} </main>
+          <main className={classes.content}>
+            <div className={classes.toolbar} />
+            {children}
+          </main>
         </div>
       </Fragment>
     );
   }
 }
 
-export default withStyles(styles)(Layout);
+export default compose(
+  withRouter,
+  withStyles(styles),
+)(Layout);
