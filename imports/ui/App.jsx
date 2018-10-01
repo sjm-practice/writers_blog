@@ -5,7 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import styles from "./styles";
 import Writers from "./Writers";
-import NotFound from "./Errors/404";
+import { NotFound } from "./Errors";
 
 // App component - represents the whole app
 export default withStyles(styles)(

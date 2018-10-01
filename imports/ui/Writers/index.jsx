@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import { Route, Link, Redirect } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import Writer from "./Writer";
-import NotFound from "../Errors/404";
+import { NotFound } from "../Errors";
 
 export default ({ match: { url }, writers }) => (
   <Fragment>
