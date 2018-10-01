@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import styles from "./styles";
 import Writers from "./Writers";
+import NotFound from "./Errors/404";
 
 // App component - represents the whole app
 export default withStyles(styles)(
@@ -55,7 +56,7 @@ export default withStyles(styles)(
                 render={props => <Writers {...props} writers={writers} />}
               />
 
-              <Route render={() => <h3>Not Found.</h3>} />
+              <Route component={NotFound} />
             </Switch>
           </Fragment>
         </BrowserRouter>
