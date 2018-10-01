@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, Redirect } from "react-router-dom";
 import Writer from "./Writer";
 
 export default ({ match: { url }, writers }) => (
@@ -16,9 +16,15 @@ export default ({ match: { url }, writers }) => (
 
     <Route
       path={`${url}/:writerId`}
-      render={({ match }) => (
-        <Writer {...writers.find(writer => writer.id === match.params.writerId)} />
-      )}
+      render={({ match }) => {
+        const foundWriter = writers.find(writer => writer.id === match.params.writerId);
+
+        if (!foundWriter) {
+          return <h3>Not Found.</h3>;
+        }
+
+        return <Writer {...foundWriter} />;
+      }}
     />
   </Fragment>
 );

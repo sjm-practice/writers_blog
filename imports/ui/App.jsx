@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { BrowserRouter, Link, Route } from "react-router-dom";
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import styles from "./styles";
 import Writers from "./Writers";
 
@@ -45,11 +45,18 @@ export default withStyles(styles)(
               </li>
             </ul>
 
-            <Route exact path="/" render={() => <div>Home</div>} />
-            <Route
-              path="/writers"
-              render={props => <Writers {...props} writers={writers} />}
-            />
+            <hr />
+
+            <Switch>
+              <Route exact path="/" render={() => <div>Home</div>} />
+
+              <Route
+                path="/writers"
+                render={props => <Writers {...props} writers={writers} />}
+              />
+
+              <Route render={() => <h3>Not Found.</h3>} />
+            </Switch>
           </Fragment>
         </BrowserRouter>
       );
